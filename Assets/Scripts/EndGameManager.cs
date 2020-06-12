@@ -1,21 +1,38 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class EndGameScript : MonoBehaviour
+public class EndGameManager : MonoBehaviour
 {
-    public AudioClip endClip;
-    public AudioClip success;
-    public AudioClip whoosh;
-    public GameObject enterHighscorePanel;
-    public Text scoreDisplayMain;
-    public Text highscoreDisplayPopup;
-    public Text enteredName;
+    [SerializeField]
+    private AudioClip endClip;
 
-    public RectTransform loadingPanel;
+    [SerializeField]
+    private AudioClip success;
 
-    float slideSpeed = 50f;
-    int points;
+    [SerializeField]
+    private AudioClip whoosh;
+
+    [SerializeField]
+    private GameObject enterHighscorePanel;
+
+    [SerializeField]
+    private Text scoreDisplayMain;
+
+    [SerializeField]
+    private Text highscoreDisplayPopup;
+
+    [SerializeField]
+    private Text enteredName;
+
+    [SerializeField]
+    private RectTransform loadingPanel;
+
+    [SerializeField]
+    private float slideSpeed;
+
+    private int points;
 
     void Start()
     {
@@ -32,9 +49,9 @@ public class EndGameScript : MonoBehaviour
             AudioManager.instance.PlaySingle(false, success);
         }
         else
+        {
             AudioManager.instance.PlaySingle(false, endClip);
-
-        GameObject.FindGameObjectWithTag("PointObject").GetComponent<PointObjectValue>().points = 0;
+        }
     }
 
     public void EnterHighscore()
@@ -100,11 +117,6 @@ public class EndGameScript : MonoBehaviour
         enterHighscorePanel.SetActive(false);
     }
 
-    public void BackToMainMenu()
-    {
-        Application.LoadLevel(0);
-    }
-
     public void SlideLoadingPanel()
     {
         StartCoroutine(SlideLoadingPanelCoroutine());
@@ -127,8 +139,13 @@ public class EndGameScript : MonoBehaviour
         PlayAgain();
     }
 
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void PlayAgain()
     {
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
     }
 }

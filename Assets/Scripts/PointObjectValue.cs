@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class PointObjectValue : MonoBehaviour
 {
@@ -8,5 +7,10 @@ public class PointObjectValue : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        points = 0;
     }
 }

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class HowToPlay : MonoBehaviour
 {
     public void BackToMainMenu()
     {
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
     }
 }

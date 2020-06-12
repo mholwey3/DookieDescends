@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Timer : MonoBehaviour
 {
@@ -7,7 +6,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        timer += Time.time;
+        timer += Time.deltaTime;
     }
 
     public float GetTimer()

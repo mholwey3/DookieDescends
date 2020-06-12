@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class SpawnCar : MonoBehaviour
+public class CarSpawnManager : MonoBehaviour
 {
-	public float currentWaitTime;
-	public float waitTimeLength;
-	public GameObject[] carPrefabs;
-	public Transform spawnPoint;
+    [SerializeField]
+    private GameObject[] carPrefabs;
+
+    [SerializeField]
+    private Transform spawnPoint;
+
+    [SerializeField]
+    private float waitTimeLength;
+
+    private float currentWaitTime;
+
     private Timer timer;
 
 	void Start () 
@@ -14,7 +20,6 @@ public class SpawnCar : MonoBehaviour
         SetSpawnTimer();
         timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
 	}
-	
     
 	void Update ()
 	{
@@ -24,7 +29,7 @@ public class SpawnCar : MonoBehaviour
 		{
 			Instantiate(carPrefabs[Random.Range(0 , carPrefabs.Length)], spawnPoint.position, spawnPoint.rotation);
 
-            if (timer.GetTimer() > 30)//increase frequency of spawning
+            if (timer.GetTimer() > 30f)
             {
                 IncreaseDifficulty();
                 timer.ResetTimer();
@@ -42,7 +47,9 @@ public class SpawnCar : MonoBehaviour
     private void IncreaseDifficulty()
     {
         if (waitTimeLength <= 3f)
+        {
             return;
+        }
 
         waitTimeLength--;
     }

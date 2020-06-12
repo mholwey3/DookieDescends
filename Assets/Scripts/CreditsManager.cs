@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class CreditsScript : MonoBehaviour
+public class CreditsManager : MonoBehaviour
 {
     [SerializeField]
     private Text credits;
@@ -20,8 +20,8 @@ public class CreditsScript : MonoBehaviour
         }
 	}
 
-    public void returnToMenu()
+    public void GoToMainMenu()
     {
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(0);
     }
 }

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class DestroyerScript : MonoBehaviour
+public class Destroyer : MonoBehaviour
 {
     private Bird bird;
 

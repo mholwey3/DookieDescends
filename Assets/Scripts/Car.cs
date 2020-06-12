@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CarMove : MonoBehaviour
+public class Car : MonoBehaviour
 {
     [SerializeField]
 	private float lowSpeed;
+
     [SerializeField]
     private float highSpeed;
-    [SerializeField]
+
+	[SerializeField]
+	public int points;
+
     private float randomSpeed;
 
 	void Awake ()

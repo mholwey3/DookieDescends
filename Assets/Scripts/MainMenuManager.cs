@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     private AudioClip startMusic;

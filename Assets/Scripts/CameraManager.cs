@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveCamera : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
-	public float speed;
-    public AudioClip gameplayMusic;
-    public AudioClip whoosh;
-    public RectTransform loadingPanel;
-    float slideSpeed = 50f;
+    [SerializeField]
+    private AudioClip gameplayMusic;
+
+    [SerializeField]
+    private AudioClip whoosh;
+
+    [SerializeField]
+    private RectTransform loadingPanel;
+
+    [SerializeField]
+    private float slideSpeed;
 
     void Start()
     {
@@ -15,11 +21,6 @@ public class MoveCamera : MonoBehaviour
         AudioManager.instance.PlayNewMusic(gameplayMusic);
         StartCoroutine(SlideLoadingPanelCoroutine());
     }
-
-	void Update ()
-	{
-		transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime), transform.position.y, transform.position.z);
-	}
 
     IEnumerator SlideLoadingPanelCoroutine()
     {
